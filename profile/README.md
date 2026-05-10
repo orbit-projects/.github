@@ -1,38 +1,30 @@
 # Orbit
 
-> Open-source Python tooling and framework ecosystem.
+> Modular Python tooling and framework ecosystem.
 
-![Python](https://img.shields.io/badge/python-3.11+-blue.svg)
-![License](https://img.shields.io/badge/license-Apache--2.0-green.svg)
-![Status](https://img.shields.io/badge/status-active--development-orange.svg)
+Orbit is an open-source project under Undreamt focused on building modern developer tooling, framework utilities, and experimental infrastructure in Python.
 
-Orbit is a GitHub organization focused on building modular tooling, framework utilities, and developer-focused infrastructure in Python.
+The project is being developed around the idea that frameworks and tooling should be:
 
-The organization contains projects related to:
-
-* Framework architecture
-* Static site generation
-* CLI tooling
-* Shared typing systems
-* Backend utilities
-* Developer tooling
-* Experimental infrastructure
-
-Orbit is being developed with a focus on:
-
-* Modular design
-* Clean architecture
-* Type safety
-* Developer experience
-* Learnable codebases
-
-Most projects under the organization are experimental and actively evolving.
+* Modular
+* Learnable
+* Type-safe
+* Developer-focused
+* Easy to extend
 
 ---
 
-# Repositories
+## Vision
 
-Current repositories and projects include:
+Orbit aims to explore modern framework architecture and developer workflows while keeping the ecosystem clean, understandable, and flexible.
+
+The goal is not to create a monolithic system, but a collection of modular tools that work well together.
+
+---
+
+## Current Projects
+
+Orbit currently includes work around:
 
 * `orbit-core`
 * `orbit-types`
@@ -43,20 +35,37 @@ Current repositories and projects include:
 
 ---
 
-# Status
+## Focus Areas
 
-Orbit is currently under active development.
+Current development focuses on:
 
-APIs, tooling, and project structure may change frequently as the ecosystem evolves.
+* Framework architecture
+* Static site generation
+* Backend utilities
+* CLI tooling
+* Shared typing systems
+* Developer infrastructure
+* Experimental tooling
 
 ---
 
-# Contributing
+## Philosophy
 
-Ideas, feedback, issues, and contributions are welcome.
+Orbit is built with strong focus on:
+
+* Modular design
+* Clean architecture
+* Developer experience
+* Strong typing
+* Learnable internals
+* Open experimentation
+
+The ecosystem is being built publicly while continuously evolving through experimentation and real-world implementation.
 
 ---
 
-# License
+## Status
 
-Apache License 2.0
+Orbit is currently experimental and under active development.
+
+APIs, tooling, and project structure may evolve frequently as the ecosystem grows.
