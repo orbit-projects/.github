@@ -2,7 +2,7 @@
 
 > Modular Python tooling and framework ecosystem.
 
-Orbit is an open-source project under Undreamt focused on building modern developer tooling, framework utilities, and experimental infrastructure in Python.
+Orbit is an open-source project under [Undreamt](https://github.com/undreamt-hq) focused on building modern developer tooling, framework utilities, and experimental infrastructure in Python.
 
 The project is being developed around the idea that frameworks and tooling should be:
 
