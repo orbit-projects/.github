@@ -211,5 +211,8 @@ Orbit has learned from and experimented around ideas inspired by projects and to
 * [Starlette](https://www.starlette.io)
 * [Rich](https://github.com/Textualize/rich)
 * [Uvicorn](https://www.uvicorn.org)
+* [Vue.js](https://vuejs.org)
+* [Vite](https://vitejs.dev)
+* [Nuxt](https://nuxt.com)
 
 Thanks to the open-source community and all the projects that continue to inspire experimentation, learning, and better developer tooling.
