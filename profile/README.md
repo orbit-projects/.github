@@ -45,7 +45,6 @@ The project is intentionally being developed in public while continuously evolvi
 - [x] Initial package ecosystem
 - [x] CLI foundation
 - [x] Type system experiments
-- [x] Static site generation experiments
 - [x] Modular architecture planning
 
 ## In Progress
@@ -82,7 +81,6 @@ Orbit currently includes development around:
 * `orbit-cli`
 * `orbit-kit`
 * `orbit-server`
-* `orbit-ssg`
 
 Additional modules and tooling may be added as the ecosystem evolves.
 
