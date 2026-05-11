@@ -94,7 +94,6 @@ Additional modules and tooling may be added as the ecosystem evolves.
 | Initial modular architecture | ✅ |
 | CLI tooling foundation | ✅ |
 | Type utilities | ✅ |
-| Static site generation experiments | ✅ |
 | Stable APIs | ❌ |
 | Full documentation | ❌ |
 | Production-ready release | ❌ |
