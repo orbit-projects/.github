@@ -1,8 +1,22 @@
 # Orbit
 
-> A modular Python framework and tooling ecosystem focused on modern developer infrastructure, experimental architecture, and clean extensible tooling.
+<div align="center">
 
-Orbit is an open-source ecosystem under [Undreamt](https://github.com/undreamt-hq) focused on building developer-first tooling and framework utilities in Python.
+<img src="assets/orbit.png" width="140" alt="Orbit Logo" />
+
+# Orbit
+
+### A modular Python framework and tooling ecosystem focused on modern developer infrastructure, experimental architecture, and clean extensible tooling.
+
+Open-source project under [Undreamt](https://github.com/undreamt-hq) focused on building developer-first tooling and framework utilities in Python.
+
+</div>
+
+---
+
+## About
+
+Orbit is an open-source ecosystem focused on creating modular tooling and framework utilities with strong emphasis on developer experience, architecture, and experimentation.
 
 The ecosystem is designed around a simple idea:
 
@@ -34,6 +48,20 @@ Orbit is being built with strong focus on:
 - Real-world implementation
 
 The project is intentionally being developed in public while continuously evolving through experimentation, iteration, and learning.
+
+---
+
+# Current Projects
+
+Orbit currently includes development around:
+
+- `orbit-core`
+- `orbit-types`
+- `orbit-cli`
+- `orbit-kit`
+- `orbit-server`
+
+Additional modules and tooling may be added as the ecosystem evolves.
 
 ---
 
@@ -76,42 +104,11 @@ The project is intentionally being developed in public while continuously evolvi
 
 ---
 
-# Current Projects
-
-Orbit currently includes development around:
-
-- `orbit-core`
-- `orbit-types`
-- `orbit-cli`
-- `orbit-kit`
-- `orbit-server`
-
-Additional modules and tooling may be added as the ecosystem evolves.
-
----
-
-# Current Status
-
-| Component | Status |
-|----------|--------|
-| Core ecosystem structure | ✅ |
-| Initial modular architecture | ✅ |
-| CLI tooling foundation | ✅ |
-| Type utilities | ✅ |
-| Stable APIs | ❌ |
-| Full documentation | ❌ |
-| Production-ready release | ❌ |
-| Complete testing coverage | ❌ |
-| SSR infrastructure | ❌ |
-
----
-
 # Ecosystem Goals
 
 Orbit is currently focused on exploring:
 
 - Framework architecture
-- Static site generation
 - Backend utilities
 - CLI tooling
 - Shared typing systems
@@ -171,11 +168,25 @@ The development server watches files and rebuilds automatically during developme
 orbit build
 ```
 
-This generates the static production output.
+This generates the production output.
 
 ---
 
 Orbit development workflows are actively evolving and APIs may change frequently while the ecosystem matures.
+
+---
+
+# Community
+
+Orbit welcomes:
+
+- Developers
+- Open-source contributors
+- Students
+- Experimenters
+- Curious builders
+
+Contributions, feedback, and ideas are always welcome.
 
 ---
 
@@ -193,8 +204,8 @@ Orbit is being built publicly and contributions, experiments, discussions, and f
 - Help with testing
 - Contribute utilities/modules
 - Improve developer workflows
-- Experiment with frontend integrations
-- Build reusable components
+- Experiment with integrations
+- Build reusable tooling
 
 ---
 
@@ -270,3 +281,19 @@ Orbit has learned from and experimented around ideas inspired by projects and to
 - [Nuxt](https://nuxt.com)
 
 Thanks to the open-source community and all the projects that continue to inspire experimentation, learning, and better developer tooling.
+
+---
+
+<div align="center">
+
+### Build beyond convention.
+
+</div>
+
+---
+
+# Status
+
+Orbit is currently experimental and under active development.
+
+APIs, tooling, and project structure may evolve frequently as the ecosystem grows.
