@@ -6,7 +6,7 @@
 
 ### A modular Python framework ecosystem for backend architecture, fullstack orchestration, and developer tooling.
 
-Open-source project under Undreamt focused on building composable infrastructure and tooling for modern Python applications.
+Open-source project under [Undreamt](https://github.com/undreamt-hq) focused on building composable infrastructure and tooling for modern Python applications.
 
 </div>
 
