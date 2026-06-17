@@ -4,9 +4,9 @@
 
 # Orbit
 
-### A modular Python framework ecosystem for backend architecture, fullstack orchestration, and developer tooling.
+### Enterprise-grade application platform built on FastAPI.
 
-Open-source project under [Undreamt](https://github.com/undreamt-hq) focused on building composable infrastructure and tooling for modern Python applications.
+Building modern Python applications through a unified architecture, official batteries, and developer-first tooling.
 
 </div>
 
@@ -14,443 +14,214 @@ Open-source project under [Undreamt](https://github.com/undreamt-hq) focused on 
 
 # About
 
-Orbit is designed around a simple principle:
+Orbit is an open-source ecosystem for building scalable Python applications.
 
-> Frameworks should be composable, understandable, and extensible without becoming tightly coupled or overly abstract.
+Rather than acting as a thin wrapper around existing frameworks, Orbit provides a structured platform that combines architecture, tooling, batteries, and conventions into a cohesive developer experience.
 
-Rather than acting as a monolithic framework that replaces existing ecosystems, Orbit focuses on structured tooling and orchestration around established technologies.
+Orbit is built around a carefully chosen stack:
 
-Orbit currently focuses on:
+* FastAPI
+* Starlette
+* Pydantic
+* Vue
+* Nuxt
+* PrimeVue
+* Oruga
+* Point
 
-- Backend architecture
-- Runtime orchestration
-- Project scaffolding
-- Shared framework infrastructure
-- Developer tooling
-- Experimental architecture design
+The goal is simple:
 
-The ecosystem intentionally integrates with specialized frameworks instead of reimplementing every layer internally.
-
----
-
-# Vision
-
-Orbit aims to explore modern framework design while remaining lightweight, understandable, and modular.
-
-Instead of creating a single tightly coupled framework, Orbit is structured as independent components that can work together or be used individually.
-
-Long-term goals include:
-
-- Composable architecture
-- Shared runtime systems
-- Typed contracts
-- Extensible tooling
-- Service-oriented workflows
-- Modular ecosystem design
-
----
-
-# Ecosystem Modules
-
-| Module | Purpose |
-|----------|----------|
-| `orbit-core` | Core framework primitives and abstractions |
-| `orbit-server` | Runtime integrations and backend execution |
-| `orbit-cli` | CLI tooling and project generation |
-| `orbit-types` | Shared contracts and type definitions |
-| `orbit-kit` | Shared utilities and reusable framework infrastructure |
-
----
-
-# Ecosystem Relationships
-
-```text
-orbit-kit
-    ↓
-orbit-types
-    ↓
-orbit-core
-    ↓
-orbit-server
-    ↓
-orbit-cli
-```
-
----
-
-# High-Level Architecture
-
-```text
-                 ┌─────────────────┐
-                 │   orbit-cli     │
-                 │ scaffolding/DX  │
-                 └────────┬────────┘
-                          │
-                          ▼
-                   orbit new
-                          │
-         ┌────────────────┴────────────────┐
-         ▼                                 ▼
-
-┌─────────────────┐             ┌─────────────────┐
-│    Backend      │             │    Frontend     │
-│ FastAPI/Robyn   │             │ Vue/Nuxt/etc    │
-└────────┬────────┘             └────────┬────────┘
-         │                               │
-         ▼                               ▼
-
- ┌──────────────┐             ┌──────────────────┐
- │ orbit-server │             │ Existing frontend│
- │ runtime layer│             │ ecosystems       │
- └──────────────┘             └──────────────────┘
-         │
-         ▼
- ┌──────────────┐
- │ orbit-core   │
- │ abstractions │
- └──────────────┘
-         │
-         ▼
- ┌──────────────┐
- │ orbit-types  │
- │ contracts    │
- └──────────────┘
-```
+> Provide a stable foundation for startups while offering the architecture and tooling required by enterprise teams.
 
 ---
 
 # Philosophy
 
-Orbit is being developed with emphasis on:
+We believe application platforms should be:
 
-- Modular design
-- Strong typing
-- Clean architecture
-- Developer experience
-- Extensibility
-- Learnable internals
-- Public experimentation
-- Practical implementation
+* Learnable
+* Modular
+* Extensible
+* Type-safe
+* Developer-first
+* Built for the long term
 
-Orbit intentionally delegates specialized problems to existing ecosystems instead of recreating everything internally.
+Orbit emphasizes:
 
-Current ecosystem integrations include:
+* Clean architecture
+* Strong foundations
+* Convention over configuration
+* Batteries included
+* Excellent developer experience
+* Long-term maintainability
 
-- FastAPI
-- Robyn
-- Vue
-- Nuxt
-- Vite
-- Quasar
+Rather than supporting every possible technology stack, Orbit focuses on providing one well-integrated ecosystem.
 
 ---
 
-# Generated Application Structure
+# Ecosystem
 
-Example generated application:
+## Core
 
-```text
-app/
-├── backend/
-│   ├── api/
-│   │   ├── routes/
-│   │   ├── controllers/
-│   │   └── services/
-│   │
-│   ├── core/
-│   ├── models/
-│   ├── main.py
-│   └── requirements.txt
-│
-├── frontend/
-│   ├── app/
-│   ├── package.json
-│   └── ...
-│
-├── orbit.config.py
-└── README.md
-```
+The Orbit foundation.
+
+| Package      | Purpose                                                     |
+| ------------ | ----------------------------------------------------------- |
+| orbit-core   | Application architecture, modules, lifecycle, configuration |
+| orbit-server | FastAPI runtime integration                                 |
+| orbit-types  | Shared contracts and type definitions                       |
+| orbit-cli    | Scaffolding and developer tooling                           |
+| orbit-kit    | Meta package and ecosystem distribution                     |
 
 ---
 
-# Backend Architecture
+## Batteries
 
-Orbit structures backend applications into layered components.
+Official packages maintained as part of the Orbit platform.
 
-### Routes
-
-Responsible for:
-
-- Endpoint definitions
-- HTTP mappings
-- Request entrypoints
-
-```python
-@app.get("/users")
-```
-
----
-
-### Controllers
-
-Responsible for:
-
-- Request orchestration
-- Request handling
-- Service coordination
+| Package             | Purpose                          |
+| ------------------- | -------------------------------- |
+| orbit-auth          | Authentication and authorization |
+| orbit-db            | Database integration             |
+| orbit-admin         | Administrative dashboard         |
+| orbit-cache         | Caching and Redis integration    |
+| orbit-storage       | File and object storage          |
+| orbit-mail          | Email delivery and notifications |
+| orbit-queue         | Background jobs and scheduling   |
+| orbit-observability | Logging, metrics, and tracing    |
 
 ---
 
-### Services
+## Performance Extensions
 
-Responsible for:
+Optional acceleration layers.
 
-- Business logic
-- Data processing
-- Reusable application logic
+| Package     | Purpose                                    |
+| ----------- | ------------------------------------------ |
+| orbit-robyn | High-performance integrations and services |
 
----
-
-### Models
-
-Responsible for:
-
-- Data structures
-- Schemas
-- Future ORM integrations
-
----
-
-### Core
-
-Responsible for:
-
-- Configuration
-- Shared utilities
-- Common responses
-
----
-
-# Supported Backends
-
-| Backend | Purpose |
-|----------|----------|
-| FastAPI | Typed APIs and services |
-| Robyn | Lightweight high-performance services |
+Performance extensions enhance Orbit but are never required for applications to function.
 
 ---
 
 # Frontend Ecosystem
 
-Orbit currently integrates with:
+Orbit officially supports a Vue-centric frontend stack.
 
-| Frontend | Languages |
-|----------|------------|
-| Vue | JS / TS |
-| Nuxt | JS / TS |
-| Quasar | JS / TS |
+## Applications
 
-Orbit delegates frontend runtime responsibilities to dedicated frontend ecosystems.
+* Vue
+* Nuxt
+
+## UI
+
+* PrimeVue
+* Oruga
+
+## Documentation
+
+* Point
+* VitePress
+
+This allows Orbit applications, documentation, and administrative tooling to share a consistent ecosystem.
 
 ---
 
-# Runtime Commands
+# Architecture
 
-## Backend Runtime
+Orbit follows a layered architecture.
 
-```bash
-orbit start
+```text
+Orbit
+
+Core
+├── orbit-core
+├── orbit-server
+├── orbit-types
+├── orbit-cli
+└── orbit-kit
+
+Batteries
+├── orbit-auth
+├── orbit-db
+├── orbit-admin
+├── orbit-cache
+├── orbit-storage
+├── orbit-mail
+├── orbit-queue
+└── orbit-observability
+
+Performance
+└── orbit-robyn
 ```
 
-Starts backend runtime services.
+Applications are composed of modules rather than large collections of unrelated folders.
 
----
+```text
+modules/
 
-## Frontend Development
-
-```bash
-orbit dev
+├── users/
+├── auth/
+├── billing/
+└── inventory/
 ```
 
-Starts frontend development runtime.
+Each module owns its routes, services, schemas, repositories, tests, and configuration.
 
 ---
 
-## Fullstack Development
+# Vision
 
-```bash
-orbit runserver
-```
+Orbit is being built as a long-term platform for application development.
 
-Starts backend and frontend development environments simultaneously.
+Current focus areas include:
 
----
+* Application architecture
+* Developer tooling
+* Authentication
+* Database integration
+* Administrative tooling
+* Background processing
+* Observability
+* Performance extensions
 
-## Production Build
-
-```bash
-orbit build
-```
-
-Builds frontend production assets.
-
----
-
-## Production Preview
-
-```bash
-orbit serve
-```
-
-Runs frontend production preview.
+Future capabilities will continue to build upon the same core principles of modularity, maintainability, and developer experience.
 
 ---
 
-# CLI Architecture
+# Status
 
-Orbit CLI currently uses:
+Orbit is currently under active development.
 
-- Typer
+The ecosystem architecture has been established and the platform is evolving toward its first generation of official batteries.
 
-Available commands:
+APIs and implementations may evolve as the ecosystem matures.
 
-```bash
-orbit new
-orbit start
-orbit dev
-orbit runserver
-orbit build
-orbit serve
-```
-
----
-
-# Project Generation Workflow
-
-```bash
-orbit new
-```
-
-Current generation workflow:
-
-1. Select backend framework
-2. Select frontend framework
-3. Generate project structure
-4. Copy templates
-5. Generate `orbit.config.py`
-6. Create starter application files
-
----
-
-# Orbit Configuration
-
-Example:
-
-```python
-CONFIG = {
-    "backend": {
-        "framework": "fastapi",
-        "entry": "main:app"
-    },
-
-    "frontend": "vue"
-}
-```
-
-Used as:
-
-- Runtime configuration
-- Framework metadata
-- Application orchestration
-
----
-
-# Installation
-
-## CLI
-
-```bash
-pip install orbit-framework-cli
-```
-
----
-
-## Individual Packages
-
-```bash
-pip install orbit-framework-core
-pip install orbit-framework-server
-pip install orbit-framework-types
-pip install orbit-framework-kit
-```
-
----
-
-# Current Focus Areas
-
-Orbit currently focuses on:
-
-- APIs
-- Services
-- Backend platforms
-- Fullstack orchestration
-- Tooling infrastructure
-
----
-
-# Development Status
-
-Orbit is currently in an early ecosystem development phase.
-
-Current state:
-
-- Core architecture established
-- CLI tooling operational
-- Runtime orchestration functional
-- Project generation available
-- Ecosystem structure defined
-
-Areas still evolving:
-
-- Service abstractions
-- Middleware systems
-- Plugin architecture
-- Runtime features
-- Tooling improvements
-- Data integrations
+We build in public, iterate continuously, and share what we learn along the way.
 
 ---
 
 # Contributing
 
-Orbit is being built publicly and contributions are welcome.
+Orbit welcomes contributions from developers, students, researchers, and builders.
 
 Ways to contribute:
 
-- Improve architecture
-- Report issues
-- Improve documentation
-- Create tooling experiments
-- Help testing
-- Suggest ideas
-- Contribute utilities/modules
+* Improve architecture
+* Report issues
+* Improve documentation
+* Help testing
+* Suggest ideas
+* Contribute tooling and integrations
+
+You do not need to be an expert to contribute.
+
+Curiosity, experimentation, and a willingness to learn are enough.
 
 ---
 
-# Inspiration
+# ![Undreamt](https://github.com/undreamt-hq)
 
-Orbit experiments around ideas and concepts influenced by:
+Orbit is developed as part of the Undreamt ecosystem.
 
-- FastAPI
-- Robyn
-- Typer
-- Pydantic
-- Starlette
-- Rich
-- Uvicorn
-- Vue
-- Vite
-- Nuxt
-- Quasar
-
-Thanks to the open-source community and the projects that continue to inspire learning and experimentation.
+Focused on building open-source infrastructure, developer tooling, educational platforms, and software systems designed for long-term growth.
