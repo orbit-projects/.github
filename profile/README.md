@@ -38,11 +38,13 @@ The goal is a cohesive framework, not a collection of unrelated integrations. Pa
 
 Orbit separates the web framework runtime, capability contracts, and provider implementations:
 
+```text
 Web application
 └── orbit-core
     ├── capability package
     │   └── provider integration
     └── optional language-specific implementation
+```
 
 - **`orbit-core`** provides the Python application runtime and stable extension contracts.
 - **Capability packages** define focused interfaces, such as data access, storage, messaging, or security.
@@ -51,10 +53,12 @@ Web application
 
 For example, object storage uses a shared capability with provider-specific integrations:
 
+```text
 orbit-storage
 ├── orbit-s3
 ├── orbit-gcs
 └── orbit-azure-storage
+```
 
 Applications can use the storage contract without tying application code to one provider.
 
@@ -175,4 +179,3 @@ Start with the contributing guide and code of conduct in the repository you want
 ***
 
 Orbit is developed as part of the [Undreamt](<https://github.com/undreamt-hq>) ecosystem, focused on open source infrastructure, developer tooling, and software designed for long-term growth.
-
