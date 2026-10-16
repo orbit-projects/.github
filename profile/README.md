@@ -4,9 +4,9 @@
 
 # Orbit
 
-### Building an enterprise-grade, cloud native web framework.
+### An open-source framework ecosystem for cloud-native web applications
 
-A Python framework and modular package ecosystem for building, deploying, and operating modern web applications.
+Orbit is being built toward an enterprise-grade Python web framework, with modular capabilities and optional integrations for the systems applications depend on.
 
 </div>
 
@@ -14,168 +14,87 @@ A Python framework and modular package ecosystem for building, deploying, and op
 
 ## About
 
-Orbit is an open source web framework project. Its goal is to provide a stable foundation for application teams—from startups to enterprises—with the architecture, integrations, and developer tools needed to build cloud native web applications.
+Orbit brings together an application runtime, developer tools, capability packages, and provider integrations. The goal is to help teams build web applications that work well in local development and can be operated across containerized and cloud-native environments.
 
-The framework has a Python core and a modular ecosystem of separately installable packages. Core owns application orchestration, lifecycle, dependency injection, configuration, state, events, health, ASGI and routing, CLI, and stable extension contracts. Database, authentication, storage, messaging, observability, and provider integrations live in their respective packages.
+The ecosystem is modular. Applications install the capabilities they need, while provider-specific packages own their vendor SDKs, credentials, and transport details. This keeps infrastructure choices out of application code where a stable shared contract is useful, while still allowing providers to expose meaningful differences.
 
-Orbit is designed for containerized and distributed environments while remaining practical to develop and run locally. Teams can adopt capabilities as needed without making every infrastructure choice a requirement of the core framework.
-
-## Philosophy
-
-Orbit aims to be:
-
-- Learnable and productive for application developers
-- Modular, with clear boundaries between Core and optional packages
-- Extensible through stable, documented contracts
-- Secure by default, with explicit operational behavior
-- Cloud native and portable across deployment environments
-- Open source, with package level documentation and contribution practices
-- Sustainable to maintain as the framework and ecosystem grow
-
-The goal is a cohesive framework, not a collection of unrelated integrations. Packages should work well together while remaining independently useful.
+Orbit is in active development. Its goal is enterprise-grade operation; the current package maturity and release status vary. Check each repository's documentation and release information before relying on a capability in production.
 
 ## Architecture
 
-Orbit separates the web framework runtime, capability contracts, and provider implementations:
+Orbit separates the application runtime, capability contracts, and provider implementations:
 
 ```text
-Web application
+Application
 └── orbit-core
     ├── capability package
     │   └── provider integration
     └── optional language-specific implementation
 ```
 
-- **`orbit-core`** provides the Python application runtime and stable extension contracts.
-- **Capability packages** define focused interfaces, such as data access, storage, messaging, or security.
-- **Provider integrations** implement those interfaces and own vendor SDKs, credentials, transport, and provider-specific behavior.
-- **Language-specific implementations** are separate packages when another language suits the workload. Cross-language boundaries are defined by the relevant package contract; gRPC and Protobuf are used where a typed service boundary is appropriate.
+- **`orbit-core`** provides the Python application runtime: orchestration, lifecycle, dependency injection, configuration, state, events, health, ASGI and routing, and stable extension contracts.
+- **`orbit-cli`** provides an interactive control interface for common development and operations workflows, with conventional commands for automation and fallback use.
+- **Capability packages** define focused user-facing contracts, such as data access, authentication, storage, messaging, or observability.
+- **Provider integrations** implement those contracts and own provider configuration, credentials, SDKs, transport, and provider-specific errors.
+- **Language-specific implementations** are optional packages for workloads where another language is a suitable fit. Packages use a defined service boundary, such as gRPC and Protobuf, when cross-process communication is appropriate.
 
-For example, object storage uses a shared capability with provider-specific integrations:
+For example, applications can use the object-storage capability while selecting a provider adapter:
 
 ```text
 orbit-storage
-├── orbit-s3
-├── orbit-gcs
-└── orbit-azure-storage
+├── orbit-storage-s3
+├── orbit-storage-gcs
+└── orbit-storage-azure
 ```
-
-Applications can use the storage contract without tying application code to one provider.
 
 ## Ecosystem
 
-### Core and application development
+Orbit packages are maintained as separate repositories. These are examples of the current package families; use the [organization repository list](https://github.com/orgs/orbit-projects/repositories) for the up-to-date inventory.
 
-| Repository | Purpose |
+| Area | Capability and integration examples |
 |---|---|
-| [orbit-core](<https://github.com/orbit-projects/orbit-core>) | Python web application runtime and stable extension contracts |
-| [orbit-admin](<https://github.com/orbit-projects/orbit-admin>) | Administrative application capabilities |
-| [orbit-gateway](<https://github.com/orbit-projects/orbit-gateway>) | API gateway utilities |
-| [orbit-graphql](<https://github.com/orbit-projects/orbit-graphql>) | GraphQL support |
-| [orbit-realtime](<https://github.com/orbit-projects/orbit-realtime>) | WebSockets and server-sent events |
-| [orbit-devtools](<https://github.com/orbit-projects/orbit-devtools>) | Development tooling |
-| [orbit-testing](<https://github.com/orbit-projects/orbit-testing>) | Testing utilities |
+| Application foundation | `orbit-core`, `orbit-cli`, `orbit-admin`, `orbit-gateway`, `orbit-graphql` |
+| Data | `orbit-data`, `orbit-sql`, `orbit-nosql`, `orbit-migrations`, `orbit-cache`, `orbit-vector` |
+| SQL providers | `orbit-sql-sqlite`, `orbit-sql-postgres`, `orbit-sql-mysql` |
+| NoSQL and cache providers | `orbit-nosql-mongo`, `orbit-cache-redis` |
+| Object storage | `orbit-storage`, `orbit-storage-s3`, `orbit-storage-gcs`, `orbit-storage-azure` |
+| Identity and security | `orbit-auth`, `orbit-auth-jwt`, `orbit-auth-oauth2`, `orbit-auth-rbac`, `orbit-security`, `orbit-secrets` |
+| Messaging and work | `orbit-events`, `orbit-events-kafka`, `orbit-events-rabbitmq`, `orbit-events-nats`, `orbit-workers`, `orbit-scheduler`, `orbit-streams`, `orbit-saga` |
+| Observability | `orbit-observability`, `orbit-logging`, `orbit-metrics`, `orbit-tracing`, `orbit-metrics-prometheus`, `orbit-metrics-grafana` |
+| Cloud and operations | `orbit-cloud`, `orbit-cloud-aws`, `orbit-cloud-gcp`, `orbit-cloud-azure`, `orbit-discovery`, `orbit-kubernetes`, `orbit-config-server`, `orbit-resilience` |
+| Realtime and transport | `orbit-sockets`, `orbit-realtime`, `orbit-webrtc`, with selected Go and Rust implementations |
+| External services | `orbit-search` and provider adapters, `orbit-email`, `orbit-notifications`, `orbit-payments` and payment-provider adapters |
+| Developer experience | `orbit-testing`, `orbit-devtools` |
 
-### Data and storage
+Package availability, supported providers, and maturity vary. A package name in this catalog does not imply a published release, complete feature set, or verified production compatibility.
 
-| Repository | Purpose |
-|---|---|
-| [orbit-data](<https://github.com/orbit-projects/orbit-data>) | Shared data access contracts |
-| [orbit-sql](<https://github.com/orbit-projects/orbit-sql>) | SQL capability |
-| [orbit-nosql](<https://github.com/orbit-projects/orbit-nosql>) | NoSQL capability |
-| [orbit-sql-sqlite](<https://github.com/orbit-projects/orbit-sql-sqlite>) | SQLite integration |
-| [orbit-sql-postgres](<https://github.com/orbit-projects/orbit-sql-postgres>) | PostgreSQL integration |
-| [orbit-sql-mysql](<https://github.com/orbit-projects/orbit-sql-mysql>) | MySQL integration |
-| [orbit-mongo](<https://github.com/orbit-projects/orbit-mongo>) | MongoDB integration |
-| [orbit-redis](<https://github.com/orbit-projects/orbit-redis>) | Redis integration |
-| [orbit-vector](<https://github.com/orbit-projects/orbit-vector>) | Vector database capability |
-| [orbit-migrations](<https://github.com/orbit-projects/orbit-migrations>) | Database migrations |
-| [orbit-storage](<https://github.com/orbit-projects/orbit-storage>) | Object storage capability |
-| [orbit-s3](<https://github.com/orbit-projects/orbit-s3>) | S3-compatible object storage |
-| [orbit-gcs](<https://github.com/orbit-projects/orbit-gcs>) | Google Cloud Storage |
-| [orbit-azure-storage](<https://github.com/orbit-projects/orbit-azure-storage>) | Azure Blob Storage |
+## Cloud-native direction
 
-### Messaging and background work
+Orbit is designed to support applications running from a developer's machine through containers and cloud-native infrastructure. The ecosystem is working toward:
 
-| Repository | Purpose |
-|---|---|
-| [orbit-events](<https://github.com/orbit-projects/orbit-events>) | Event-driven application contracts |
-| [orbit-kafka](<https://github.com/orbit-projects/orbit-kafka>) | Apache Kafka integration |
-| [orbit-rabbitmq](<https://github.com/orbit-projects/orbit-rabbitmq>) | RabbitMQ integration |
-| [orbit-nats](<https://github.com/orbit-projects/orbit-nats>) | NATS integration |
-| [orbit-streams](<https://github.com/orbit-projects/orbit-streams>) | Stream processing |
-| [orbit-streams-rust](<https://github.com/orbit-projects/orbit-streams-rust>) | Rust stream-processing implementation |
-| [orbit-workers](<https://github.com/orbit-projects/orbit-workers>) | Background workers |
-| [orbit-scheduler](<https://github.com/orbit-projects/orbit-scheduler>) | Scheduled jobs |
+- Explicit startup, shutdown, resource cleanup, timeout, and failure behavior.
+- Portable capability contracts with provider-specific behavior kept visible where it matters.
+- Optional integrations for databases, brokers, object storage, identity, and cloud platforms.
+- Clear security boundaries for credentials, authentication, authorization, and secret handling.
+- Operational visibility through logs, metrics, traces, health checks, and resilience tools.
+- Optional Go and Rust implementations where a package has a well-defined workload and a useful conformance boundary.
 
-### Security
+Cloud-native does not mean requiring a cluster for local development. Applications should be able to adopt infrastructure integrations when their deployment needs call for them.
 
-| Repository | Purpose |
-|---|---|
-| [orbit-security](<https://github.com/orbit-projects/orbit-security>) | Authentication and authorization capabilities |
-| [orbit-oauth2](<https://github.com/orbit-projects/orbit-oauth2>) | OAuth2 and OpenID Connect |
-| [orbit-jwt](<https://github.com/orbit-projects/orbit-jwt>) | JWT authentication |
-| [orbit-rbac](<https://github.com/orbit-projects/orbit-rbac>) | Role-based access control |
+## Development status
 
-### Observability and operations
-
-| Repository | Purpose |
-|---|---|
-| [orbit-observability](<https://github.com/orbit-projects/orbit-observability>) | Shared observability capabilities |
-| [orbit-logging](<https://github.com/orbit-projects/orbit-logging>) | Structured logging |
-| [orbit-metrics](<https://github.com/orbit-projects/orbit-metrics>) | Metrics collection |
-| [orbit-prometheus](<https://github.com/orbit-projects/orbit-prometheus>) | Prometheus integration |
-| [orbit-tracing](<https://github.com/orbit-projects/orbit-tracing>) | Distributed tracing |
-| [orbit-cache](<https://github.com/orbit-projects/orbit-cache>) | Caching |
-| [orbit-lock](<https://github.com/orbit-projects/orbit-lock>) | Distributed locking |
-| [orbit-resilience](<https://github.com/orbit-projects/orbit-resilience>) | Retry, circuit breaker, and rate limiting |
-
-Health checks and application readiness are part of the Core runtime.
-
-### Cloud native integrations and services
-
-| Repository | Purpose |
-|---|---|
-| [orbit-cloud](<https://github.com/orbit-projects/orbit-cloud>) | Cloud control-plane capability contracts |
-| [orbit-kubernetes](<https://github.com/orbit-projects/orbit-kubernetes>) | Kubernetes integration |
-| [orbit-kubernetes-go](<https://github.com/orbit-projects/orbit-kubernetes-go>) | Go Kubernetes implementation |
-| [orbit-discovery](<https://github.com/orbit-projects/orbit-discovery>) | Service discovery capability |
-| [orbit-discovery-go](<https://github.com/orbit-projects/orbit-discovery-go>) | Go service discovery implementation |
-| [orbit-config-server](<https://github.com/orbit-projects/orbit-config-server>) | Centralized configuration |
-| [orbit-search](<https://github.com/orbit-projects/orbit-search>) | Search capability |
-| [orbit-search-elasticsearch](<https://github.com/orbit-projects/orbit-search-elasticsearch>) | Elasticsearch integration |
-| [orbit-search-opensearch](<https://github.com/orbit-projects/orbit-search-opensearch>) | OpenSearch integration |
-| [orbit-email](<https://github.com/orbit-projects/orbit-email>) | Email integration |
-| [orbit-notifications](<https://github.com/orbit-projects/orbit-notifications>) | Email, SMS, and push notification capabilities |
-
-Planned cloud control-plane adapters include `orbit-aws`, `orbit-gcp`, and `orbit-azure`. They will implement `orbit-cloud` and remain separate from service-specific integrations such as `orbit-s3`, `orbit-gcs`, and `orbit-azure-storage`.
-
-## Cloud native applications
-
-Orbit is intended for applications that run across local development, containers, and cloud native infrastructure.
-
-- Develop and run applications locally without requiring a cluster.
-- Package services as containers and use Kubernetes integrations when needed.
-- Keep provider SDKs and credentials inside provider integrations.
-- Compose only the capabilities an application uses.
-- Preserve provider-specific options when a common abstraction would hide meaningful differences.
-
-## Production direction
-
-Orbit’s goal is to become an enterprise-grade framework. That requires more than a broad package catalog: each capability must have clear contracts, safe defaults, tested lifecycle and failure behavior, useful documentation, and a dependable release process.
-
-The ecosystem is actively developing toward that goal. Readiness varies by repository and release; a repository’s presence does not imply feature completeness, production certification, or support for every deployment. Check each project’s README, release notes, compatibility information, and security policy before adopting it.
+Orbit is an early-stage open-source project working toward a `v0.1.0-alpha` milestone. Interfaces and implementations may change as the ecosystem is reviewed and validated. Local checks, hosted CI, live-provider compatibility, publication, provenance, and deployment are separate forms of evidence; check the relevant repository for current results.
 
 ## Open source and contributing
 
-Orbit is built in the open. Contributions, bug reports, documentation improvements, and focused design discussions are welcome.
+Orbit is developed in the open. Contributions can improve code, tests, documentation, examples, accessibility, security, and developer experience.
 
-Start with the contributing guide and code of conduct in the repository you want to work on. Each repository owns its documentation, support boundaries, and release history.
+Before contributing, read the contributing guide, security policy, and development instructions in the repository you plan to work on. Keep changes focused, include tests for behavior changes, and document operational constraints. Report issues in the repository responsible for the capability or integration.
 
-- Browse the [Orbit repositories](<https://github.com/orgs/orbit-projects/repositories>).
-- Read the [Core architecture documentation](<https://github.com/orbit-projects/orbit-core/tree/main/docs/architecture>).
-- Report issues in the repository responsible for the behavior.
+- Browse [Orbit repositories](https://github.com/orgs/orbit-projects/repositories).
+- Read the [Core architecture documentation](https://github.com/orbit-projects/orbit-core/tree/main/docs/architecture).
+- Review the [organization contribution guidance](https://github.com/orbit-projects/.github).
 
-***
+---
 
-Orbit is developed as part of the [Undreamt](<https://github.com/undreamt-hq>) ecosystem, focused on open source infrastructure, developer tooling, and software designed for long-term growth.
+Orbit is developed as part of the [Undreamt](https://github.com/undreamt-hq) open-source community.
